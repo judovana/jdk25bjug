@@ -3,11 +3,51 @@
 ###      With short walk from previous LTS
 ###        over 22, 23, 24 up to now.
 
-By Jiri Vanek, Jiri Andrlik and Karm from IBM's OpenJDK team.
+See "slides" in [jdk25bjug.markdown](jdk25bjug.markdown) 
+
+By [judovana](https://github.com/judovana) (language/vm changes) , [andrlos](https://github.com/andrlos) (jfr/crypto) and [karm](https://github.com/karm) (AOT)from IBM's OpenJDK team.
 Wednesday, 17th September 2025, JUG meetup in https://impacthub.cz/brno/
 
-From JDK8 to JDK11, java made a gigantic leap. over 17 to 21 its direction get clear - to remove legacy bad things (jar hell...), to keep peace with modern development styles and languages, keep boosting performance, scale but still still keep extensive stability, and backward compatibility.
-We will summarize what happened since that time, and what new features will arrive.
+Presentation written for https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#magic-command
+Dont forget to follow https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#installation stepls
 
-JDK25 was early adapted already since June, as many accepted features were simply already finished (mostly thanx to preview/experimental approaches) and merged early to stabilize.
-Based on this, we will try to come with as much demos as possible, so save your time.
+Warning, ~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua is slightly buggy, and you need to pass the in-tree filenames with full path:
+
+```
+lua  ~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua  jdk25bjug.markdown -deduct -height 30 -vim
+jdk25bjug.markdown exists and is file
+-clean: false
+-deduct: true
+-height: 30
+-break: --PAGE--
+-vim: true
+lua: ~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua:65: bad argument #1 to 'match' (string expected, got nil)
+stack traceback:
+	[C]: in function 'string.match'
+	~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua:65: in function 'deductFileName'
+	~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua:165: in main chunk
+	[C]: in ?
+```
+->
+```
+lua  ~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua  `pwd`/jdk25bjug.markdown -deduct -height 30 -vim
+~/git/weak-point-presentations/jdk25bjug.markdown exists and is file
+-clean: false
+-deduct: true
+-height: 30
+-break: --PAGE--
+-vim: true
+-output: ~/git/weak-point-presentations/jdk25bjug-WeakPoint
+Pages: 9
+1.markdown
+2.markdown
+3.markdown
+4.markdown
+5.markdown
+6.markdown
+7.markdown
+8.markdown
+9.markdown
+~/git/weak-point-presentations/jdk25bjug-WeakPoint
+```
+
