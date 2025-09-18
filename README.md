@@ -9,8 +9,8 @@ By [judovana](https://github.com/judovana) (language/vm changes) , [andrlos](htt
 Wednesday, 17th September 2025, JUG meetup in https://impacthub.cz/brno/
 
 ### weakpoint format
-Presentation written for https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#magic-command
-Dont forget to follow https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#installation stepls
+Presentation written for https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#magic-command<br>
+Dont forget to follow https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#installation steps
 
 Warning, ~/.vim/bundle/vim-weakpoint/WeekPointSplitter.lua is slightly buggy, and you need to pass the in-tree filenames with full path:
 
