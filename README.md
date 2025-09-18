@@ -4,6 +4,7 @@
 ###        over 22, 23, 24 up to now.
 
 See "slides" in [jdk25bjug.markdown](jdk25bjug.markdown) 
+You can view them directly via [http://raw.githack.com](https://rawcdn.githack.com/judovana/jdk25bjug2025/f25c4c8860361c4b34b95d1aa16380ffa7c163bf/jdk25bjug.html)
 
 By [judovana](https://github.com/judovana) (language/vm changes) , [andrlos](https://github.com/andrlos) (jfr/crypto) and [karm](https://github.com/karm) (AOT) from IBM's OpenJDK team.
 Wednesday, 17th September 2025, JUG meetup in https://impacthub.cz/brno/
