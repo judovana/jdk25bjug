@@ -1,0 +1,670 @@
+<!--
+https://markdowntohtml.com/
+s|a>\n|a><br>\n|g
+s|--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---|<br>\n--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>\n|g
+-->
+<h1 id="quo-vadis-java-">Quo vadis java?</h1>
+<h3 id="or-news-in-newest-lts-jdk25-as-released-16-9-2025">Or news in newest LTS JDK25, as released 16/9/2025</h3>
+<h3 id="with-short-walk-from-previous-lts">With short walk from previous LTS</h3>
+<h3 id="over-22-23-24-up-to-now-">over 22, 23, 24 up to now.</h3>
+<p>By Jiri Vanek, Jiri Andrlik and Karm from IBM&#39;s OpenJDK team.
+Wednesday, 17th September 2025, JUG meetup in <a href="https://impacthub.cz/brno/">https://impacthub.cz/brno/</a></p>
+<p>From JDK8 to JDK11, java made a gigantic leap. over 17 to 21 its direction get clear - to remove legacy bad things (jar hell...), to keep peace with modern development styles and languages, keep boosting performance, scale but still still keep extensive stability, and backward compatibility.
+We will summarize what happened since that time, and what new features will arrive.</p>
+<p>JDK25 was early adapted already since June, as many accepted features were simply already finished (mostly thanx to preview/experimental approaches) and merged early to stabilize.
+Based on this, we will try to come with as much demos as possible, so save your time.</p>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="migration-path-in-developers-minds">Migration path in Developers minds</h1>
+<ul>
+<li>Who is using STS?<ul>
+<li>daily?</li>
+<li>as playground?</li>
+<li>is actually trying the new features?<ul>
+<li>which?</li>
+</ul>
+</li>
+<li>is actually using the new features?<ul>
+<li>which?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Who is jumping from LTS to another LTS?<ul>
+<li>and just checking the new features passively</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="long-path-since-jdk21-9-23-">Long path since JDK21 (9/23):</h1>
+<h2 id="jdk22-3-24">JDK22 3/24</h2>
+<p>423: <a href="https://openjdk.org/jeps/423">Region Pinning for G1</a><br>
+447: <a href="https://openjdk.org/jeps/447">Statements before super(...) (Preview)</a><br>
+454: <a href="https://openjdk.org/jeps/454">Foreign Function &amp; Memory API</a><br>
+456: <a href="https://openjdk.org/jeps/456">Unnamed Variables &amp; Patterns</a><br>
+457: <a href="https://openjdk.org/jeps/457">Class-File API (Preview)</a><br>
+458: <a href="https://openjdk.org/jeps/458">Launch Multi-File Source-Code Programs</a><br>
+459: <a href="https://openjdk.org/jeps/459">String Templates (Second Preview)</a><br>
+460: <a href="https://openjdk.org/jeps/460">Vector API (Seventh Incubator)</a><br>
+461: <a href="https://openjdk.org/jeps/461">Stream Gatherers (Preview)</a><br>
+462: <a href="https://openjdk.org/jeps/462">Structured Concurrency (Second Preview)</a><br>
+463: <a href="https://openjdk.org/jeps/463">Implicitly Declared Classes and Instance Main Methods (Second Preview)</a><br>
+464: <a href="https://openjdk.org/jeps/464">Scoped Values (Second Preview)</a></p>
+<h2 id="jdk23-9-24">JDK23  9/24</h2>
+<p>455: <a href="https://openjdk.org/jeps/455">Primitive Types in Patterns, instanceof, and switch (Preview)</a><br>
+466: <a href="https://openjdk.org/jeps/466">Class-File API (Second Preview)</a><br>
+467: <a href="https://openjdk.org/jeps/467">Markdown Documentation Comments</a><br>
+469: <a href="https://openjdk.org/jeps/469">Vector API (Eighth Incubator)</a><br>
+473: <a href="https://openjdk.org/jeps/473">Stream Gatherers (Second Preview)</a><br>
+471: <a href="https://openjdk.org/jeps/471">Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal</a><br>
+474: <a href="https://openjdk.org/jeps/474">ZGC: Generational Mode by Default</a><br>
+476: <a href="https://openjdk.org/jeps/476">Module Import Declarations (Preview)</a><br>
+477: <a href="https://openjdk.org/jeps/477">Implicitly Declared Classes and Instance Main Methods (Third Preview)</a><br>
+480: <a href="https://openjdk.org/jeps/480">Structured Concurrency (Third Preview)</a><br>
+481: <a href="https://openjdk.org/jeps/481">Scoped Values (Third Preview)</a><br>
+482: <a href="https://openjdk.org/jeps/482">Flexible Constructor Bodies (Second Preview)</a></p>
+<h2 id="jdk24-3-25-quite-a-lot-of-features-guess-why-">JDK24  3/25 (quite a lot of features, guess why)</h2>
+<p>404: <a href="https://openjdk.org/jeps/404">Generational Shenandoah (Experimental)</a><br>
+450: <a href="https://openjdk.org/jeps/450">Compact Object Headers (Experimental)</a><br>
+472: <a href="https://openjdk.org/jeps/472">Prepare to Restrict the Use of JNI</a><br>
+475: <a href="https://openjdk.org/jeps/475">Late Barrier Expansion for G1</a><br>
+478: <a href="https://openjdk.org/jeps/478">Key Derivation Function API (Preview)</a><br>
+479: <a href="https://openjdk.org/jeps/479">Remove the Windows 32-bit x86 Port</a><br>
+483: <a href="https://openjdk.org/jeps/483">Ahead-of-Time Class Loading &amp; Linking</a><br>
+484: <a href="https://openjdk.org/jeps/484">Class-File API</a><br>
+485: <a href="https://openjdk.org/jeps/485">Stream Gatherers</a><br>
+486: <a href="https://openjdk.org/jeps/486">Permanently Disable the Security Manager</a><br>
+487: <a href="https://openjdk.org/jeps/487">Scoped Values (Fourth Preview)</a><br>
+488: <a href="https://openjdk.org/jeps/488">Primitive Types in Patterns, instanceof, and switch (Second Preview)</a><br>
+489: <a href="https://openjdk.org/jeps/489">Vector API (Ninth Incubator)</a><br>
+490: <a href="https://openjdk.org/jeps/490">ZGC: Remove the Non-Generational Mode</a><br>
+491: <a href="https://openjdk.org/jeps/491">Synchronize Virtual Threads without Pinning</a><br>
+492: <a href="https://openjdk.org/jeps/492">Flexible Constructor Bodies (Third Preview)</a><br>
+493: <a href="https://openjdk.org/jeps/493">Linking Run-Time Images without JMODs</a><br>
+494: <a href="https://openjdk.org/jeps/494">Module Import Declarations (Second Preview)</a><br>
+495: <a href="https://openjdk.org/jeps/495">Simple Source Files and Instance Main Methods (Fourth Preview)</a><br>
+496: <a href="https://openjdk.org/jeps/496">Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism</a><br>
+7497: <a href="https://openjdk.org/jeps/497">Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm</a><br>
+498: <a href="https://openjdk.org/jeps/498">Warn upon Use of Memory-Access Methods in sun.misc.Unsafe</a><br>
+499: <a href="https://openjdk.org/jeps/499">Structured Concurrency (Fourth Preview)</a><br>
+501: <a href="https://openjdk.org/jeps/501">Deprecate the 32-bit x86 Port for Removal</a></p>
+<h2 id="jdk25-9-25">JDK25 9/25</h2>
+<p>470: <a href="https://openjdk.org/jeps/470">PEM Encodings of Cryptographic Objects (Preview)</a><br>
+502: <a href="https://openjdk.org/jeps/502">Stable Values (Preview)</a><br>
+503: <a href="https://openjdk.org/jeps/503">Remove the 32-bit x86 Port</a><br>
+505: <a href="https://openjdk.org/jeps/505">Structured Concurrency (Fifth Preview)</a><br>
+506: <a href="https://openjdk.org/jeps/506">Scoped Values</a><br>
+507: <a href="https://openjdk.org/jeps/507">Primitive Types in Patterns, instanceof, and switch (Third Preview)</a><br>
+508: <a href="https://openjdk.org/jeps/508">Vector API (Tenth Incubator)</a><br>
+509: <a href="https://openjdk.org/jeps/509">JFR CPU-Time Profiling (Experimental)</a><br>
+510: <a href="https://openjdk.org/jeps/510">Key Derivation Function API</a><br>
+511: <a href="https://openjdk.org/jeps/511">Module Import Declarations</a><br>
+512: <a href="https://openjdk.org/jeps/512">Compact Source Files and Instance Main Methods</a><br>
+513: <a href="https://openjdk.org/jeps/513">Flexible Constructor Bodies</a><br>
+514: <a href="https://openjdk.org/jeps/514">Ahead-of-Time Command-Line Ergonomics</a><br>
+515: <a href="https://openjdk.org/jeps/515">Ahead-of-Time Method Profiling</a><br>
+518: <a href="https://openjdk.org/jeps/518">JFR Cooperative Sampling</a><br>
+519: <a href="https://openjdk.org/jeps/519">Compact Object Headers</a><br>
+520: <a href="https://openjdk.org/jeps/520">JFR Method Timing &amp; Tracing</a><br>
+521: <a href="https://openjdk.org/jeps/521">Generational Shenandoah</a></p>
+<h2 id="jdk26-9-26">JDK26 9/26</h2>
+<p>504: <a href="https://openjdk.org/jeps/504">Remove the Applet API</a></p>
+<ul>
+<li>netX, ITW, Deepak, me and many interns</li>
+</ul>
+<p>66 JEPs, is &quot;just&quot; 34 features at the end, from those but from those 14 indeed landed in  jdk25
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="hotspot-and-self-contained-changes-1-3">Hotspot and self contained changes 1/3</h1>
+<p>423: <a href="https://openjdk.org/jeps/423">Region Pinning for G1</a> (22)</p>
+<ul>
+<li>reduce latency, and keep G1 live during JNI calls
+474: <a href="https://openjdk.org/jeps/474">ZGC: Generational Mode by Default</a> (23)<ul>
+<li>490: <a href="https://openjdk.org/jeps/490">ZGC: Remove the Non-Generational Mode</a> (24)
+404: <a href="https://openjdk.org/jeps/404">Generational Shenandoah (Experimental)</a> (24)</li>
+<li>521: <a href="https://openjdk.org/jeps/521">Generational Shenandoah</a> (25)
+475: <a href="https://openjdk.org/jeps/475">Late Barrier Expansion for G1</a> (24)</li>
+<li>G1 decrease C2 load
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="hotspot-and-self-contained-changes-2-3">Hotspot and self contained changes 2/3</h1>
+</li>
+</ul>
+</li>
+</ul>
+<p>479: <a href="https://openjdk.org/jeps/479">Remove the Windows 32-bit x86 Port</a> (24)
+501: <a href="https://openjdk.org/jeps/501">Deprecate the 32-bit x86 Port for Removal</a> (24)</p>
+<ul>
+<li>503: <a href="https://openjdk.org/jeps/503">Remove the 32-bit x86 Port</a> (25)</li>
+<li>Intel only, just for case...
+486: <a href="https://openjdk.org/jeps/486">Permanently Disable the Security Manager</a> (24)</li>
+<li>actually since jdk17</li>
+<li>SM code still there
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="hotspot-and-self-contained-changes-3-3">Hotspot and self contained changes 3/3</h1>
+</li>
+</ul>
+<p>491: <a href="https://openjdk.org/jeps/491">Synchronize Virtual Threads without Pinning</a> (24)</p>
+<ul>
+<li>change the JVM&#39;s implementation of the synchronized keyword so that virtual threads can acquire, hold, and release monitors, independently of their carriers.
+450: <a href="https://openjdk.org/jeps/450">Compact Object Headers (Experimental)</a> (24)</li>
+<li>519: <a href="https://openjdk.org/jeps/519">Compact Object Headers</a> (25)</li>
+<li>96-128b -&gt; 64b. OpenJ9 inspiration however non-default</li>
+<li>finished, however: <code>-XX:+UseCompactObjectHeaders</code></li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="build-and-jfr">build and jfr</h1>
+<p>493: <a href="https://openjdk.org/jeps/493">Linking Run-Time Images without JMODs</a> (24)
+483: <a href="https://openjdk.org/jeps/483">Ahead-of-Time Class Loading &amp; Linking</a> (24)</p>
+<ul>
+<li>another ahead of time compilation/caching, for jdk and trained applications<ul>
+<li>514: <a href="https://openjdk.org/jeps/514">Ahead-of-Time Command-Line Ergonomics</a> (25)</li>
+<li>515: <a href="https://openjdk.org/jeps/515">Ahead-of-Time Method Profiling</a> (25)
+518: <a href="https://openjdk.org/jeps/518">JFR Cooperative Sampling</a><br>
+520: <a href="https://openjdk.org/jeps/520">JFR Method Timing &amp; Tracing</a><br>
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="unfinished-changes">unfinished changes</h1>
+509: <a href="https://openjdk.org/jeps/509">JFR CPU-Time Profiling (Experimental)</a> (25)</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="crypto">Crypto</h1>
+<p>478: <a href="https://openjdk.org/jeps/478">Key Derivation Function API (Preview)</a> (24)</p>
+<ul>
+<li>510: <a href="https://openjdk.org/jeps/510">Key Derivation Function API</a> (25)</li>
+<li>KDFs make use of cryptographic inputs, such as initial key material, a salt value, and a pseudorandom function, to create new cryptographically strong key material
+496: <a href="https://openjdk.org/jeps/496">Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism</a> (25)</li>
+<li><code>KeyPairGenerator.getInstance(&quot;ML-KEM&quot;)</code> for the crypto api collection 
+497: <a href="https://openjdk.org/jeps/497">Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm</a> (25)</li>
+<li><code>KeyPairGenerator.getInstance(&quot;ML-DSA&quot;);</code> for the crypto api collection
+470: <a href="https://openjdk.org/jeps/470">PEM Encodings of Cryptographic Objects (Preview)</a> (25)</li>
+<li>Define a concise API that converts between Privacy-Enhanced Mail text and objects representing keys, certificates... 
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="-small-language-improvements-1-2">&quot;Small&quot; language improvements 1/2</h1>
+</li>
+</ul>
+<p>456: <a href="https://openjdk.org/jeps/456">Unnamed Variables &amp; Patterns</a> (22)</p>
+<ul>
+<li>for (Order _ : orders)    // Unnamed variable
+458: <a href="https://openjdk.org/jeps/458">Launch Multi-File Source-Code Programs</a> (22)</li>
+<li>still requires cp as it is. Just imagine ant without xml...
+461: <a href="https://openjdk.org/jeps/461">Stream Gatherers (Preview)</a> (22)</li>
+<li>473: <a href="https://openjdk.org/jeps/473">Stream Gatherers (Second Preview)</a> (23)<ul>
+<li>485: <a href="https://openjdk.org/jeps/485">Stream Gatherers</a> (24)</li>
+<li>an extension point so that anyone could define intermediate stream operations
+467: <a href="https://openjdk.org/jeps/467">Markdown Documentation Comments</a> (23)</li>
+</ul>
+</li>
+<li>flavor?
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="-small-language-improvements-2-2">&quot;Small&quot; language improvements 2/2</h1>
+</li>
+</ul>
+<p>471: <a href="https://openjdk.org/jeps/471">Deprecate the Memory-Access Methods in sun.misc.Unsafe for Removal</a> (23)</p>
+<ul>
+<li>498: <a href="https://openjdk.org/jeps/498">Warn upon Use of Memory-Access Methods in sun.misc.Unsafe</a> (24)
+454: <a href="https://openjdk.org/jeps/454">Foreign Function &amp; Memory API</a> (22)</li>
+<li>Introduce an API by which Java programs can interoperate with code and data outside of the Java runtime. By efficiently invoking  code outside the JVM and by safely accessing its memory (without the brittleness and danger of JNI)</li>
+<li>472: <a href="https://openjdk.org/jeps/472">Prepare to Restrict the Use of JNI</a> 24<ul>
+<li>Prepare the Java ecosystem for a future release that disallows interoperation with native code by default, whether via JNI or the FFM API. As of that release, application developers will have to explicitly enable the use of JNI and the FFM API at startup.
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="-small-language-improvements-unfinished-changes">&quot;Small&quot; language improvements - unfinished changes</h1>
+</li>
+</ul>
+</li>
+</ul>
+<p>502: <a href="https://openjdk.org/jeps/502">Stable Values (Preview)</a> (25)</p>
+<ul>
+<li>dynamic and lazy <code>final</code> with full optimization </li>
+<li>private final StableValue<Logger> logger = StableValue.of();
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="long-cooked-changes-finished-1-2">Long cooked changes (finished) 1/2</h1>
+</li>
+</ul>
+<p>447: <a href="https://openjdk.org/jeps/447">Statements before super(...) (Preview)</a> (22)</p>
+<ul>
+<li>482: <a href="https://openjdk.org/jeps/482">Flexible Constructor Bodies (Second Preview)</a> (23)<ul>
+<li>492: <a href="https://openjdk.org/jeps/492">Flexible Constructor Bodies (Third Preview)</a> (24)<ul>
+<li>513: <a href="https://openjdk.org/jeps/513">Flexible Constructor Bodies</a> (25)</li>
+<li>my code lives; super()!; and keep going</li>
+</ul>
+</li>
+<li>476: <a href="https://openjdk.org/jeps/476">Module Import Declarations (Preview)</a> (23)</li>
+</ul>
+</li>
+<li>494: <a href="https://openjdk.org/jeps/494">Module Import Declarations (Second Preview)</a> (24)<ul>
+<li>511: <a href="https://openjdk.org/jeps/511">Module Import Declarations</a> (25)<ul>
+<li><code>import module myModulesExportedPkgs</code>
+463: <a href="https://openjdk.org/jeps/463">Implicitly Declared Classes and Instance Main Methods (Second Preview)</a> (22)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>477: <a href="https://openjdk.org/jeps/477">Implicitly Declared Classes and Instance Main Methods (Third Preview)</a> (23)<ul>
+<li>495: <a href="https://openjdk.org/jeps/495">Simple Source Files and Instance Main Methods (Fourth Preview)</a> (24)<ul>
+<li>512: <a href="https://openjdk.org/jeps/512">Compact Source Files and Instance Main Methods</a> (25)</li>
+<li><code>void main() {     System.out.println(&quot;Hello, World!&quot;); }</code> and extending jshell
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="long-cooked-changes-finished-2-2">Long cooked changes (finished) 2/2</h1>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>457: <a href="https://openjdk.org/jeps/457">Class-File API (Preview)</a> (22)</p>
+<ul>
+<li>466: <a href="https://openjdk.org/jeps/466">Class-File API (Second Preview)</a> (23)<ul>
+<li>484: <a href="https://openjdk.org/jeps/484">Class-File API</a> (24)</li>
+<li>asm, bcel... incorporated
+464: <a href="https://openjdk.org/jeps/464">Scoped Values (Second Preview)</a> (22)</li>
+<li>481: <a href="https://openjdk.org/jeps/481">Scoped Values (Third Preview)</a> (23)<ul>
+<li>487: <a href="https://openjdk.org/jeps/487">Scoped Values (Fourth Preview)</a> (24)<ul>
+<li>506: <a href="https://openjdk.org/jeps/506">Scoped Values</a> (25)</li>
+<li>A scoped value is a container object that allows a data value to be safely and efficiently shared by a method with its direct and indirect callees within the same thread, and with child threads
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="long-cooked-changes-unfinished-">Long cooked changes (unfinished)</h1>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>460: <a href="https://openjdk.org/jeps/460">Vector API (Seventh Incubator)</a> (22)</p>
+<ul>
+<li>469: <a href="https://openjdk.org/jeps/469">Vector API (Eighth Incubator)</a> (23)<ul>
+<li>489: <a href="https://openjdk.org/jeps/489">Vector API (Ninth Incubator)</a> (24)<ul>
+<li>508: <a href="https://openjdk.org/jeps/508">Vector API (Tenth Incubator)</a> (25)</li>
+<li>SIMD (Single Instruction, Multiple Data) </li>
+<li>IntVector.fromArray...
+462: <a href="https://openjdk.org/jeps/462">Structured Concurrency (Second Preview)</a> (22)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>480: <a href="https://openjdk.org/jeps/480">Structured Concurrency (Third Preview)</a> (23)<ul>
+<li>499: <a href="https://openjdk.org/jeps/499">Structured Concurrency (Fourth Preview)</a> (24)<ul>
+<li>505: <a href="https://openjdk.org/jeps/505">Structured Concurrency (Fifth Preview)</a> (25)</li>
+<li>Introducing an API for structured concurrency to treat groups of related tasks running in different threads as single units
+455: <a href="https://openjdk.org/jeps/455">Primitive Types in Patterns, instanceof, and switch (Preview)</a> (23)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>488: <a href="https://openjdk.org/jeps/488">Primitive Types in Patterns, instanceof, and switch (Second Preview)</a> (24)<ul>
+<li>507: <a href="https://openjdk.org/jeps/507">Primitive Types in Patterns, instanceof, and switch (Third Preview)</a> (25)</li>
+<li>ssia
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="dropped-">Dropped...</h1>
+</li>
+</ul>
+</li>
+</ul>
+<p>459: <a href="https://openjdk.org/jeps/459">String Templates (Second Preview)</a> (22)</p>
+<ul>
+<li><p>465 <a href="https://openjdk.org/jeps/465">String Templates (Third Preview)</a> (dropped in 23) 
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="demos-">Demos!</h1>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="-invisible-changes-without-demos-">&quot;Invisible&quot; changes (without demos)</h1>
+<h2 id="475-late-barrier-expansion-for-g1-https-openjdk-org-jeps-475-24-">475: <a href="https://openjdk.org/jeps/475">Late Barrier Expansion for G1</a> (24)</h2>
+</li>
+<li><p>Simplify the implementation of the G1 garbage collector&#39;s barriers,
+which record information about application memory accesses, by shifting
+their expansion from early in the C2 JIT&#39;s compilation pipeline to later.</p>
+</li>
+<li>expanding G1 barriers early, as is currently done, increases C2&#39;s overhead
+ by around 10-20% depending on the application</li>
+<li>nearly not measurable improvement, but huge stability leap</li>
+<li><p>also huge code readability leap
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="-invisible-changes-without-demos-">&quot;Invisible&quot; changes (without demos)</h1>
+<h2 id="490-zgc-remove-the-non-generational-mode-https-openjdk-org-jeps-490-24-">490: <a href="https://openjdk.org/jeps/490">ZGC: Remove the Non-Generational Mode</a> (24)</h2>
+<ul>
+<li>-XX:+UseZGC -XX:+-ZGenerational</li>
+<li>will but simply do nothing</li>
+<li><p>I gave up on benchmarking ZGC due its to Colored Pointers
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="-invisible-changes-without-demos-">&quot;Invisible&quot; changes (without demos)</h1>
+<h2 id="404-generational-shenandoah-experimental-https-openjdk-org-jeps-404-24-">404: <a href="https://openjdk.org/jeps/404">Generational Shenandoah (Experimental)</a> (24)</h2>
+<h3 id="521-generational-shenandoah-https-openjdk-org-jeps-521-25-">521: <a href="https://openjdk.org/jeps/521">Generational Shenandoah</a> (25)</h3>
+</li>
+<li><p>-XX:+UseShenandoahGC (-XX:+UnlockExperimentalVMOptions) -XX:ShenandoahGCMode=generational </p>
+</li>
+<li>nearly impossible to benchmark, as you need complex loads</li>
+<li>What is the &quot;generational&quot; keyword anyway?
+<br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+<h1 id="demos-">Demos!</h1>
+</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="423-region-pinning-for-g1-https-openjdk-org-jeps-423-22-">423: <a href="https://openjdk.org/jeps/423">Region Pinning for G1</a> (22)</h2>
+<ul>
+<li>reduce latency, and keep G1 live during JNI calls</li>
+<li>show blocked allocations</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="472-prepare-to-restrict-the-use-of-jni-https-openjdk-org-jeps-472-24-">472: <a href="https://openjdk.org/jeps/472">Prepare to Restrict the Use of JNI</a> (24)</h2>
+<ul>
+<li>moreover just warnings right now</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="486-permanently-disable-the-security-manager-https-openjdk-org-jeps-486-24-">486: <a href="https://openjdk.org/jeps/486">Permanently Disable the Security Manager</a> (24)</h1>
+<ul>
+<li>since jdk17</li>
+<li>show change in behavior of -Djava.security.manager=allow/-Djava.security.manager=default in jdk21 x 25 launching</li>
+<li>show that you can still create class extending SM, use it but not st as manager</li>
+<li>git checkout jdk-17-ga &amp;&amp; grep -ir -e  checkPermission -e checkWrite 2&gt;/dev/null | wc -l<ul>
+<li>1256</li>
+</ul>
+</li>
+<li>git checkout jdk-21+6 &amp;&amp; grep -ir -e  checkPermission -e checkWrite 2&gt;/dev/null | wc -l<ul>
+<li>1279</li>
+</ul>
+</li>
+<li>git checkout jdk-24+6 &amp;&amp; grep -ir -e  checkPermission -e checkWrite 2&gt;/dev/null | wc -l<ul>
+<li>1278</li>
+</ul>
+</li>
+<li>git checkout jdk-25+6 &amp;&amp; grep -ir -e  checkPermission -e checkWrite 2&gt;/dev/null | wc -l<ul>
+<li>100</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="486-permanently-disable-the-security-manager-https-openjdk-org-jeps-486-24-">486: <a href="https://openjdk.org/jeps/486">Permanently Disable the Security Manager</a> (24)</h1>
+<ul>
+<li>main difference is now in<code>-Djava.security.manager=allow</code> x <code>-Djava.security.manager=default</code> <code>-Djava.security.manager=com.foo.CustomSM</code></li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="491-synchronize-virtual-threads-without-pinning-https-openjdk-org-jeps-491-24-">491: <a href="https://openjdk.org/jeps/491">Synchronize Virtual Threads without Pinning</a> (24)</h2>
+<ul>
+<li>change the JVM&#39;s implementation of the synchronized keyword so that virtual threads can acquire, hold, and release monitors, independently of their carriers.</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="519-compact-object-headers-https-openjdk-org-jeps-519-25-">519: <a href="https://openjdk.org/jeps/519">Compact Object Headers</a> (25)</h2>
+<ul>
+<li>Reduce the size of object headers in the HotSpot JVM from between 96 and 128 bits down to 64 bits on 64-bit architectures. </li>
+<li>run billion of mini objects, with and without</li>
+<li><code>-XX:+UseCompactObjectHeaders</code></li>
+<li>see the (non?)heap memory</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="456-unnamed-variables-patterns-https-openjdk-org-jeps-456-22-">456: <a href="https://openjdk.org/jeps/456">Unnamed Variables &amp; Patterns</a> (22)</h2>
+<ul>
+<li>show compiled, show debugger, compare with named an unnamed (jrd)</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="458-launch-multi-file-source-code-programs-https-openjdk-org-jeps-458-22-">458: <a href="https://openjdk.org/jeps/458">Launch Multi-File Source-Code Programs</a> (22)</h2>
+<ul>
+<li>interpreted? Compiled? Ordering?</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="512-compact-source-files-and-instance-main-methods-https-openjdk-org-jeps-512-25-">512: <a href="https://openjdk.org/jeps/512">Compact Source Files and Instance Main Methods</a> (25)</h2>
+<ul>
+<li><code>void main() {     System.out.println(&quot;Hello, World!&quot;); }</code> </li>
+<li>see the four valid declarations. See what take preferences and show in jrd (jasm the class version)</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="467-markdown-documentation-comments-https-openjdk-org-jeps-467-23-">467: <a href="https://openjdk.org/jeps/467">Markdown Documentation Comments</a> (23)</h2>
+<ul>
+<li>show various crippled doc notations</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="511-module-import-declarations-https-openjdk-org-jeps-511-25-">511: <a href="https://openjdk.org/jeps/511">Module Import Declarations</a> (25)</h2>
+<ul>
+<li><code>import module myModulesExportedPkgs</code></li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="513-flexible-constructor-bodies-https-openjdk-org-jeps-513-25-">513: <a href="https://openjdk.org/jeps/513">Flexible Constructor Bodies</a> (25)</h2>
+<ul>
+<li><code>{my code lives; super()!};</code> </li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="493-linking-run-time-images-without-jmods-https-openjdk-org-jeps-493-24-">493: <a href="https://openjdk.org/jeps/493">Linking Run-Time Images without JMODs</a> (24)</h2>
+<ul>
+<li>nice quick demo to jlink hello world. </li>
+<li>unmodified jdk, no crosscompile...</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="498-warn-upon-use-of-memory-access-methods-in-sun-misc-unsafe-https-openjdk-org-jeps-498-24-">498: <a href="https://openjdk.org/jeps/498">Warn upon Use of Memory-Access Methods in sun.misc.Unsafe</a> (24)</h2>
+<ul>
+<li>demonstrate oom</li>
+<li>show javac/java difference in handling</li>
+<li>possible to show it still works</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="454-foreign-function-memory-api-https-openjdk-org-jeps-454-22-">454: <a href="https://openjdk.org/jeps/454">Foreign Function &amp; Memory API</a> (22)</h2>
+<ul>
+<li>proper calls to shared objects functions and to native memory</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="484-class-file-api-https-openjdk-org-jeps-484-24-">484: <a href="https://openjdk.org/jeps/484">Class-File API</a> (24)</h2>
+<ul>
+<li>asm, bcel... incorporated<ul>
+<li>do not swap with jasm!</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="485-stream-gatherers-https-openjdk-org-jeps-485-24-">485: <a href="https://openjdk.org/jeps/485">Stream Gatherers</a> (24)</h2>
+<ul>
+<li>an extension point so that anyone could define intermediate stream operations</li>
+<li>Track previously seen elements to influence the transformation of later elements<ul>
+<li>Stream::gather(Gatherer) </li>
+</ul>
+</li>
+<li>providing similar capabilities to intermediate Stream operations as the collect() provides to terminal operations<ul>
+<li>interface Collector<T,A,R></li>
+<li>interface Gatherer<T,A,R></li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="506-scoped-values-https-openjdk-org-jeps-506-25-">506: <a href="https://openjdk.org/jeps/506">Scoped Values</a> (25)</h2>
+<ul>
+<li>ThreadLocal on steroids</li>
+<li>Framework -&gt; CLient -&gt; Framework</li>
+<li>Map in ThreadLocal?-)</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="remaining-previews-">remaining previews?</h1>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="509-jfr-cpu-time-profiling-experimental-https-openjdk-org-jeps-509-">509: <a href="https://openjdk.org/jeps/509">JFR CPU-Time Profiling (Experimental)</a></h2>
+<ul>
+<li>profiling = powerful way of optimising programs</li>
+<li>new way of monitoring CPU usage</li>
+<li>helps identifying CPU hot-spots</li>
+<li>previous approach was wallclock sampling<ul>
+<li>the information provided not accurate, focusing on execution time rather than CPU</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="520-jfr-method-timing-tracing-https-openjdk-org-jeps-520-">520: <a href="https://openjdk.org/jeps/520">JFR Method Timing &amp; Tracing</a></h2>
+<ul>
+<li>especially useful if we want to trace methods (execution, timing, etc..) without changes to code</li>
+<li>can be used on server runned apps (via jmx) during runtime (via jcmd) - no demos for that :(</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="510-key-derivation-function-api-https-openjdk-org-jeps-510-25-">510: <a href="https://openjdk.org/jeps/510">Key Derivation Function API</a> (25)</h2>
+<ul>
+<li>new API for Key Derivation Function</li>
+<li>derive additional keys from the input key material</li>
+<li>one of the building steps toward Hybrid Public Key Encryption (HPKE)</li>
+<li>more use of symmetric cryptography</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="496-quantum-resistant-module-lattice-based-key-encapsulation-mechanism-https-openjdk-org-jeps-496-25-">496: <a href="https://openjdk.org/jeps/496">Quantum-Resistant Module-Lattice-Based Key Encapsulation Mechanism</a> (25)</h2>
+<ul>
+<li>ML_KEM KeyPairGenerator instance</li>
+<li>should provide quantum safe lattice based symmetric key transactions</li>
+<li>combination with JEP 510 demo</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="497-quantum-resistant-module-lattice-based-digital-signature-algorithm-https-openjdk-org-jeps-497-25-">497: <a href="https://openjdk.org/jeps/497">Quantum-Resistant Module-Lattice-Based Digital Signature Algorithm</a> (25)</h2>
+<ul>
+<li>Lattice-based signature algorithm..</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="470-pem-encodings-of-cryptographic-objects-preview-https-openjdk-org-jeps-470-25-">470: <a href="https://openjdk.org/jeps/470">PEM Encodings of Cryptographic Objects (Preview)</a> (25)</h2>
+<ul>
+<li>unified interface for Privacy-Enhanced Mail format key storage</li>
+<li>uses PKCS encryption for key storage by default, but the PKCS is not a part of the JEP itself</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h2 id="483-ahead-of-time-class-loading-linking-https-openjdk-org-jeps-483-24-">483: <a href="https://openjdk.org/jeps/483">Ahead-of-Time Class Loading &amp; Linking</a> (24)</h2>
+<h2 id="514-ahead-of-time-command-line-ergonomics-https-openjdk-org-jeps-514-25-">514: <a href="https://openjdk.org/jeps/514">Ahead-of-Time Command-Line Ergonomics</a> (25)</h2>
+<h2 id="515-ahead-of-time-method-profiling-https-openjdk-org-jeps-515-25-">515: <a href="https://openjdk.org/jeps/515">Ahead-of-Time Method Profiling</a> (25)</h2>
+<ul>
+<li>show startup time?</li>
+<li>show training of method profiling</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="remaining-previews-1-4">remaining previews 1/4</h1>
+<h2 id="507-primitive-types-in-patterns-instanceof-and-switch-third-preview-https-openjdk-org-jeps-507-25-">507: <a href="https://openjdk.org/jeps/507">Primitive Types in Patterns, instanceof, and switch (Third Preview)</a> (25)</h2>
+<ul>
+<li>Enhance pattern matching by allowing primitive types in all pattern contexts<ul>
+<li>extend <code>instanceof</code> and switch to work with all primitive types. </li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="remaining-previews-2-4">remaining previews 2/4</h1>
+<h2 id="502-stable-values-preview-https-openjdk-org-jeps-502-">502: <a href="https://openjdk.org/jeps/502">Stable Values (Preview)</a></h2>
+<ul>
+<li>enabling the same performance optimizations that are enabled by declaring a field final<ul>
+<li>The application&#39;s startup time improves</li>
+</ul>
+</li>
+<li>show code with construct: * private final StableValue<Logger> logger = StableValue.of();</li>
+<li>have it improved anything?<ul>
+<li>on scale of gigantic codebases and unified writing yes</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="remaining-previews-3-4">remaining previews 3/4</h1>
+<h2 id="508-vector-api-tenth-incubator-https-openjdk-org-jeps-508-25-">508: <a href="https://openjdk.org/jeps/508">Vector API (Tenth Incubator)</a> (25)</h2>
+<ul>
+<li>SIMD via IntVector.fromArray and friends<ul>
+<li>.Vector<E> -&gt; ByteVector, DoubleVector, FloatVector, IntVector, LongVector, ShortVector</li>
+</ul>
+</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="remaining-previews-4-4">remaining previews 4/4</h1>
+<h2 id="505-structured-concurrency-fifth-preview-https-openjdk-org-jeps-505-25-">505: <a href="https://openjdk.org/jeps/505">Structured Concurrency (Fifth Preview)</a> (25)</h2>
+<ul>
+<li>nice and well controllable sets of threads</li>
+<li>Scoped values out of the box</li>
+<li>shared control out of the box</li>
+</ul>
+<p><br>
+--PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE----PAGE---<br>
+</p>
+<h1 id="conclusion">conclusion</h1>
+<ul>
+<li>backward compatibility</li>
+<li>improvement of current behavior</li>
+<li>performance gains<ul>
+<li>&quot;if you run your application you wrote today, in 20 years, it will run faster&quot;</li>
+<li>it wills till run</li>
+<li>it will work better:)</li>
+</ul>
+</li>
+<li>removal of broken/legacy parts</li>
+<li>incubation time makes features well known and documented before GA</li>
+</ul>
+
