@@ -5,9 +5,10 @@
 
 See "slides" in [jdk25bjug.markdown](jdk25bjug.markdown) 
 
-By [judovana](https://github.com/judovana) (language/vm changes) , [andrlos](https://github.com/andrlos) (jfr/crypto) and [karm](https://github.com/karm) (AOT)from IBM's OpenJDK team.
+By [judovana](https://github.com/judovana) (language/vm changes) , [andrlos](https://github.com/andrlos) (jfr/crypto) and [karm](https://github.com/karm) (AOT) from IBM's OpenJDK team.
 Wednesday, 17th September 2025, JUG meetup in https://impacthub.cz/brno/
 
+### weakpoint format
 Presentation written for https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#magic-command
 Dont forget to follow https://github.com/tisnik/vim-weakpoint?tab=readme-ov-file#installation stepls
 
